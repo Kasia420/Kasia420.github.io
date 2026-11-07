@@ -6,7 +6,10 @@ import { el } from '../lib/dom'
 export const bullets = (items?: string[]): HTMLElement[] =>
   items && items.length ? [el('ul', { class: 'entry__bullets' }, items.map((b) => el('li', { text: b })))] : []
 
-export const extLink = (text: string, href: string) => el('a', { href, target: '_blank', rel: 'noopener', text: `${text} ↗` })
+/** The arrow after a link that opens a new tab. Drawn in CSS (.ext), not the ↗ character, which phones show as an emoji. */
+export const newTab = (): HTMLElement[] => [el('span', { class: 'ext', 'aria-hidden': 'true' }), el('span', { class: 'sr-only', text: ' (opens in a new tab)' })]
+
+export const extLink = (text: string, href: string) => el('a', { href, target: '_blank', rel: 'noopener' }, [text, ...newTab()])
 
 export function entry(e: Entry): HTMLElement {
   const meta = [e.org, e.dates, e.place].filter(Boolean).join(' · ')

@@ -35,14 +35,25 @@ p {
   text-wrap: pretty;
 }
 
+/* links stand on their own lines, so they need no underline; the arrow marks the ones that open a new tab */
 a {
   color: var(--text);
-  text-decoration-color: var(--rust);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
+  text-decoration: none;
+  transition: color var(--dur-ui);
 }
 a:hover {
-  text-decoration-color: var(--straw);
+  color: var(--paper);
+}
+/* the arrow is drawn, so no phone can turn it into an emoji; it takes the colour of its link */
+.ext {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 0.32em;
+  vertical-align: 0.04em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 9.5 9.5 2.5M4.5 2.5h5v5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 9.5 9.5 2.5M4.5 2.5h5v5'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 img,

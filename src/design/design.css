@@ -110,6 +110,8 @@ section[tabindex='-1']:focus {
   top: 14px;
   right: var(--gutter);
   z-index: 80;
+  align-items: center;
+  justify-content: center;
   background: color-mix(in srgb, var(--night) 82%, transparent);
   transition: color var(--dur-ui) var(--ease-out);
 }
@@ -425,16 +427,16 @@ section[tabindex='-1']:focus {
   min-height: 30px;
   padding: 6px 0 4px;
   border: 0;
-  border-bottom: 1px solid var(--rust);
   background: none;
-  color: var(--text);
+  color: var(--text-2);
   font: 400 12px var(--font-mono);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   cursor: pointer;
+  transition: color var(--dur-ui);
 }
 .stop__toggle:hover {
-  border-color: var(--straw);
+  color: var(--paper);
 }
 .stop__more {
   display: grid;

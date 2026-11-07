@@ -9,7 +9,7 @@ import '../styles/base.css'
 import './design.css'
 
 import Lenis from 'lenis'
-import { bullets, extLink, mountCertificates, mountLanguages, mountPublications, mountSkills } from '../components/entries'
+import { bullets, extLink, mountCertificates, mountLanguages, mountPublications, mountSkills, newTab } from '../components/entries'
 import { mountField, type Field } from '../components/field'
 import { email, link, profile } from '../lib/content'
 import { el } from '../lib/dom'
@@ -103,7 +103,7 @@ const stops: Stop[] = [
     title: lit.title,
     summary: lit.linkedin_note ?? '',
     actions: () => [
-      el('a', { class: 'btn', href: link('lost_in_translation_site'), target: '_blank', rel: 'noopener', text: "Open the project's site ↗" }),
+      el('a', { class: 'btn', href: link('lost_in_translation_site'), target: '_blank', rel: 'noopener' }, ["Open the project's site", ...newTab()]),
       el('p', { class: 'links' }, [extLink('Repository', link('lost_in_translation_repo')), ' · ', extLink('Report', link('lost_in_translation_report'))]),
     ],
     more: () => [el('p', { class: 'entry__meta', text: lit.kind ?? '' }), ...bullets(lit.bullets_cv)],
