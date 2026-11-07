@@ -1,0 +1,266 @@
+{
+  "target_roles": "Open to LLM evaluation, data annotation, search quality rating, taxonomy and responsible AI roles, remote/async or in Poznań.",
+  "person": {
+    "name": "Katarzyna Frąckowiak",
+    "location": "Poznań, Poland",
+    "headline_linkedin": "MA Student in Language, Mind & Technology | AI & NLP Enthusiast (Certified in Generative AI in Business by Cambridge) | Bridging Humanities with Data Science",
+    "hook": "I'm a linguist working on LLM evaluation: I build test sets that show where language models fail with real language, and why.",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/katarzyna-frąckowiak-0618263b0/",
+      "github": "https://github.com/Kasia420",
+      "lost_in_translation_site": "https://kasia420.github.io/lost_in_translation/",
+      "lost_in_translation_repo": "https://github.com/Kasia420/lost_in_translation",
+      "lost_in_translation_report": "https://github.com/Kasia420/lost_in_translation/blob/main/docs/portfolio_report.md",
+      "echoes_of_the_mind": "https://www.academia.edu/165002451/Echoes_of_the_Mind"
+    },
+    "email": {
+      "user": "katarzynaglowne",
+      "domain": "gmail.com"
+    }
+  },
+  "about": {
+    "paragraphs": [
+      "I'm a linguist working on LLM evaluation: I build test sets that show where language models fail with real language, and why.",
+      "I'm in the second year of an MA in Language, Mind & Technology at Adam Mickiewicz University in Poznań (cognitive linguistics, psycholinguistics, NLP, Python, R). My thesis examines how LLMs handle non-native English. I design graded test sets of Polish-L1 learner-style messages and measure where output quality drops, and whether tokenization or training data is behind it.",
+      "Native Polish, fluent English. Open to LLM evaluation, data annotation, search quality rating, taxonomy and responsible AI roles, remote/async or in Poznań."
+    ],
+    "cv_summary": "MA student in Language, Mind & Technology at Adam Mickiewicz University, working at the intersection of linguistics and LLM evaluation. As a volunteer with SpeakLeash, I design Polish-language benchmarks for the Bielik LLM; my MA research examines how NLP models handle non-native English. Native Polish speaker with C1 English and hands-on experience writing precise test items, judging model outputs and analysing results in Python and R"
+  },
+  "projects": [
+    {
+      "id": "speakleash",
+      "tier": 1,
+      "title": "LLM Evaluation Volunteer",
+      "org": "SpeakLeash (Bielik, Polish LLM)",
+      "dates": "Oct 2026 – present",
+      "bullets": [
+        "Designed a 50-item Polish irony-comprehension benchmark (literal/ironic minimal pairs and dialogues, closed-format answers) used to evaluate Bielik",
+        "Built three further 50-item sets on implicature, case marking vs word order, and English–Polish false friends; piloted items on multiple models before handoff"
+      ],
+      "linkedin_note": "Currently working on: Polish irony benchmark: a set of literal/ironic minimal pairs testing whether LLMs understand sarcasm in Polish."
+    },
+    {
+      "id": "lost-in-translation",
+      "tier": 1,
+      "title": "Lost in Translation",
+      "bullets_cv": [
+        "Collected 50 LLM responses via API; measured cross-lingual consistency with LaBSE embeddings (median cosine .81) and sentiment with XLM-RoBERTa",
+        "Tested differences with the Wilcoxon signed-rank test (p = .0004) and reported effect sizes"
+      ],
+      "linkedin_note": "\"Lost in Translation\": a Python pipeline comparing model answers to 25 matched English/Polish prompts (history, literature, social norms), using Wikipedia retrieval, LaBSE/XLM-RoBERTa embeddings and Wilcoxon tests to measure drift toward English-language framing.",
+      "links": [
+        "lost_in_translation_site",
+        "lost_in_translation_repo",
+        "lost_in_translation_report"
+      ],
+      "kind": "Course project (Adam Mickiewicz University, Language, Mind & Technology), extended with a second run · November 2026"
+    },
+    {
+      "id": "ma-thesis",
+      "tier": 1,
+      "title": "MA thesis (in progress)",
+      "bullets": [
+        "how LLMs process non-native (Polish L1) English input"
+      ],
+      "linkedin_note": "My thesis examines how LLMs handle non-native English. I design graded test sets of Polish-L1 learner-style messages and measure where output quality drops, and whether tokenization or training data is behind it."
+    }
+  ],
+  "experience": [
+    {
+      "id": "eeg-lab",
+      "tier": 2,
+      "bullets": [
+        "Ran EEG/ERP sessions under a strict experimental protocol, keeping conditions consistent so data were comparable across participants",
+        "Worked with semantic priming and lexical decision paradigms; trained in EEG signal basics (frequency bands, artefact types)"
+      ],
+      "title": "Assistant · Internship",
+      "org": "PoLA Lab, Adam Mickiewicz University",
+      "dates": "Feb 2025 – May 2025"
+    },
+    {
+      "id": "tutor",
+      "tier": 2,
+      "title": "English Tutor",
+      "org": "self-employed",
+      "dates": "2020 – 2023",
+      "bullets": [
+        "One-to-one tuition for Polish-speaking learners; daily work with L1-transfer errors (articles, prepositions, word order), the phenomenon I now study in LLMs"
+      ]
+    },
+    {
+      "id": "cadaad",
+      "tier": 3,
+      "title": "Volunteer",
+      "org": "CADAAD 9th International Conference, UAM",
+      "dates": "July 2024",
+      "bullets": [
+        "Coordinated guest registration and on-site support for international participants at a conference on discourse analysis"
+      ]
+    },
+    {
+      "id": "lubaszka",
+      "tier": 3,
+      "title": "Customer Service · Seasonal",
+      "org": "Galeria Wypieków Lubaszka",
+      "dates": "May 2022 – Sep 2022 · 5 mos",
+      "place": "Warsaw, Mazowieckie, Poland · On-site",
+      "bullets": []
+    }
+  ],
+  "education": [
+    {
+      "id": "ma",
+      "tier": 1,
+      "degree": "MA, Language, Mind & Technology",
+      "school": "Adam Mickiewicz University, Poznań",
+      "dates": "Oct 2025 – present"
+    },
+    {
+      "id": "ba",
+      "tier": 2,
+      "degree": "BA, English Studies: Literature & Culture",
+      "school": "Adam Mickiewicz University, Poznań",
+      "dates": "Oct 2022 – Sep 2025",
+      "activities_linkedin": "Internship at an EEG laboratory"
+    }
+  ],
+  "publications": [
+    {
+      "id": "echoes-of-the-mind",
+      "tier": 2,
+      "title": "Echoes of the Mind",
+      "kind": "Literary journalism",
+      "venue": "Academia.edu",
+      "date": "Apr 6, 2024",
+      "link": "echoes_of_the_mind",
+      "description": "Echoes of the Mind is a work of literary journalism following Julia, a psychiatrist, through a single 24-hour shift at a psychiatric emergency department in Poland. Through three patient encounters — an elderly man with alcohol-induced delirium, a young man with religious delusions, and a paranoid schizophrenic terrified of technology — the story uses individual cases as a lens for broader social critique, examining Poland’s cultural relationship with alcoholism, the entanglement of the Catholic Church with political life, and the psychological consequences of digitalization."
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cambridge-genai",
+      "tier": 1,
+      "title": "Generative AI in Business",
+      "issuer": "University of Cambridge (Cambridge Advance Online)",
+      "date": "Sep 2025",
+      "credential": "https://badges.parchment.eu/public/assertions/wsjYs0AwSZu5y9GUWgnj_A",
+      "note_linkedin": "Cambridge certificate in Generative AI for Business (AI risk, ethics, responsible deployment)"
+    },
+    {
+      "id": "datacamp-r",
+      "tier": 2,
+      "title": "Introduction to R",
+      "issuer": "DataCamp",
+      "date": "Feb 2026",
+      "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/809e64b52a493c612f095a0343942b60d67c9e8c"
+    },
+    {
+      "id": "datacamp-tidyverse",
+      "tier": 2,
+      "title": "Introduction to the Tidyverse",
+      "issuer": "DataCamp",
+      "date": "Jan 2026",
+      "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/78392a7471a068371ccbca61448ea34443b31370"
+    },
+    {
+      "id": "datacamp-ggplot2",
+      "tier": 2,
+      "title": "Introduction to Data Visualization with ggplot2",
+      "issuer": "DataCamp",
+      "date": null,
+      "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/ee4e4a806dd32fd055f56a6396b7efe2ee6f2a69"
+    },
+    {
+      "id": "datacamp-eda-r",
+      "tier": 2,
+      "title": "Exploratory Data Analysis in R",
+      "issuer": "DataCamp",
+      "date": null,
+      "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/ad596e23f7fa8385f17a5e0bb3a9b7617eac327a"
+    }
+  ],
+  "skills": {
+    "cv_groups": [
+      {
+        "name": "Programming",
+        "items": [
+          "Python (pandas, NumPy, SciPy, matplotlib)",
+          "R (tidyverse, ggplot2)",
+          "Git / GitHub",
+          "Docker",
+          "REST APIs"
+        ]
+      },
+      {
+        "name": "NLP / LLM",
+        "items": [
+          "HuggingFace transformers",
+          "sentence-transformers",
+          "multilingual embeddings (LaBSE)",
+          "LLM evaluation",
+          "benchmark design",
+          "prompt engineering"
+        ]
+      },
+      {
+        "name": "Data & statistics",
+        "items": [
+          "nonparametric tests",
+          "effect sizes",
+          "mixed-effects regression",
+          "data cleaning"
+        ]
+      },
+      {
+        "name": "Automation",
+        "items": [
+          "n8n"
+        ]
+      }
+    ],
+    "linkedin": [
+      "Academic Writing",
+      "Prompt Engineering",
+      "R (Programming Language)",
+      "Computational Linguistics",
+      "Python (Programming Language)",
+      "Strategic Planning",
+      "Strategic Data Analysis"
+    ],
+    "highlight_for_target_roles": [
+      "LLM evaluation",
+      "benchmark design",
+      "prompt engineering",
+      "Computational Linguistics",
+      "Python",
+      "R",
+      "Academic Writing"
+    ]
+  },
+  "languages": [
+    {
+      "name": "Polish",
+      "cv": "native",
+      "linkedin": "Native or bilingual proficiency",
+      "tier": 1
+    },
+    {
+      "name": "English",
+      "cv": "C1 (academic)",
+      "linkedin": "Full professional proficiency",
+      "tier": 1
+    },
+    {
+      "name": "German",
+      "cv": "A1/A2",
+      "linkedin": "Elementary proficiency",
+      "tier": 3
+    },
+    {
+      "name": "Spanish",
+      "cv": "A1",
+      "linkedin": "Elementary proficiency",
+      "tier": 3
+    }
+  ]
+}

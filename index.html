@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-take="flash" data-page="site">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Katarzyna Frąckowiak</title>
+    <meta name="description" content="%HOOK%" />
+    <meta name="theme-color" content="#0a0907" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Katarzyna Frąckowiak" />
+    <meta property="og:description" content="%HOOK%" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="module" src="/src/design/main.ts"></script>
+  </head>
+  <body>
+    <canvas class="world" aria-hidden="true"></canvas>
+    <div class="flash" aria-hidden="true"></div>
+    <a class="skip" href="#main">Skip to content</a>
+    <button type="button" class="seg seg--single motion-toggle" id="motion-toggle">Motion: on</button>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-name">
+        <div class="hero__fallback" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <nav class="nav" aria-label="Sections">
+            <a class="nav__lit" id="nav-lit" target="_blank" rel="noopener">Lost in Translation ↗</a>
+            <a href="#highlights">Highlights</a>
+            <a href="#experience">Experience</a>
+            <a href="#certificates">Certificates</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <div class="hero__text">
+            <h1 class="display hero__name" id="hero-name"></h1>
+            <p class="hero__line" id="hero-line"></p>
+          </div>
+          <button type="button" class="hero__enter" id="hero-enter">See now</button>
+        </div>
+      </section>
+
+      <section class="walk" id="highlights" aria-labelledby="highlights-title" tabindex="-1">
+        <h2 class="sr-only" id="highlights-title">Highlights</h2>
+        <div class="container walk__stops" id="stops"></div>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title" tabindex="-1">
+        <div class="container">
+          <div class="panel panel--about">
+            <h2 class="display section__title" id="about-title">About</h2>
+            <div class="prose" id="about-text"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="walk" id="languages" aria-labelledby="languages-title" tabindex="-1">
+        <div class="container walk__head">
+          <h2 class="display section__title section__title--free" id="languages-title">Languages &amp; skills</h2>
+        </div>
+        <div class="container walk__stops">
+          <div class="stop stop--left">
+            <article class="card card--stop card--list" aria-label="Languages">
+              <p class="label">Languages</p>
+              <div class="list" id="languages-list"></div>
+            </article>
+          </div>
+          <div class="stop stop--right">
+            <article class="card card--stop card--list card--skills" aria-label="Skills">
+              <p class="label">Skills</p>
+              <div class="skills" id="skills-list"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="walk" id="experience" aria-labelledby="experience-title" tabindex="-1">
+        <div class="container walk__head">
+          <h2 class="display section__title section__title--free" id="experience-title">Experience</h2>
+        </div>
+        <div class="container walk__stops" id="experience-stops"></div>
+      </section>
+
+      <section class="walk" id="education" aria-labelledby="education-title" tabindex="-1">
+        <div class="container walk__head walk__head--right">
+          <h2 class="display section__title section__title--free" id="education-title">Education</h2>
+        </div>
+        <div class="container walk__stops" id="education-stops"></div>
+      </section>
+
+      <section class="walk" id="certificates" aria-labelledby="certificates-title" tabindex="-1">
+        <div class="container walk__stops">
+          <div class="stop stop--left stop--wide" id="certificates-stop">
+            <div class="stop__body">
+              <h2 class="display section__title section__title--free" id="certificates-title">Certificates</h2>
+              <div class="cards cards--two" id="certificates-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="walk" id="writing" aria-labelledby="writing-title" tabindex="-1">
+        <div class="container walk__stops">
+          <div class="stop stop--right stop--wide" id="writing-stop">
+            <div class="stop__body">
+              <h2 class="display section__title section__title--free" id="writing-title">Writing</h2>
+              <div id="writing-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--end" id="contact" aria-labelledby="contact-title" tabindex="-1">
+        <div class="container">
+          <h2 class="display section__title section__title--free" id="contact-title">Contact</h2>
+          <p class="contact__roles" id="target-roles"></p>
+          <ul class="contact" id="contact-links"></ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

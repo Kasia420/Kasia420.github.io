@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.DS_Store
+# editorial notes on the CV data: kept on this computer only, never published
+content/notes.local.json

@@ -1,0 +1,60 @@
+/*
+ * Southern Gothic palette, taken from the night-flash photographs:
+ * pitch-black sky, bone-white walls under a flash, straw fields, one rusted gate.
+ *
+ * Contrast on --night (checked, WCAG 2): bone 15.6, paper 17.7, straw 9.2,
+ * dust 6.3 (all text), rust 4.3 (decoration only: underlines and small marks).
+ * Dark text on the islands: night on bone 15.6, on straw 9.2, on sepia 12.0.
+ */
+:root {
+  --night: #0a0907;
+  --night-2: #12100c;
+  --soot: #16130e;
+  --line: #2c261d;
+  --bone: #ede3cf;
+  --paper: #f6f1e7;
+  --straw: #c9ad6a;
+  --sepia: #d9c7a1;
+  --dust: #9e8f74;
+  --rust: #b0603a;
+
+  --text: var(--bone);
+  --text-2: #cbbfa3; /* 10.9:1 on night */
+  --text-3: var(--dust);
+
+  --radius: 4px;
+  --gutter: clamp(18px, 4vw, 56px);
+  --container: 1180px;
+  --dur-ui: 200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Take A: Flash. Elegant high-contrast serif + typewriter; stark black and bone. */
+:root,
+[data-take='flash'] {
+  color-scheme: dark;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+  --display-weight: 300;
+  --display-case: uppercase;
+  --display-tracking: 0.16em;
+  --body-size: 20px;
+  --island-fill: var(--bone);
+  --island-edge: var(--paper);
+  --grain: 0.07;
+}
+
+/* Take B: Sepia archive. Older newspaper serif + plain mono; warmer, grainier. */
+[data-take='archive'] {
+  --font-display: 'Old Standard TT', Georgia, serif;
+  --font-body: 'Old Standard TT', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --display-weight: 400;
+  --display-case: none;
+  --display-tracking: 0.01em;
+  --body-size: 18px;
+  --island-fill: var(--sepia);
+  --island-edge: var(--bone);
+  --grain: 0.12;
+}
