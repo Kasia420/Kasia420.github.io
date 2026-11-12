@@ -27,7 +27,7 @@ const ui = {
     newTab: 'opens in a new tab',
     activities: 'Activities',
     alsoLinkedIn: 'Also on LinkedIn',
-    langLevel: ' ', // "English C1 (academic)"
+    langLevel: ' ', // "English C1"
   },
   pl: {
     motionOn: 'Animacje: wł.',
@@ -49,7 +49,7 @@ const ui = {
     newTab: 'otwiera się w nowej karcie',
     activities: 'Aktywności',
     alsoLinkedIn: 'Także na LinkedIn',
-    langLevel: ': ', // "Angielski: C1 (akademicki)"
+    langLevel: ': ', // "Angielski: C1"
   },
 } as const
 

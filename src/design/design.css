@@ -554,7 +554,7 @@ section[tabindex='-1']:focus {
 .card--publication {
   max-width: 68ch;
 }
-/* the languages card is wider than the other cards, so the level ("C1 (academic)") always fits beside the scale */
+/* the languages card is wider than the other cards, so every level fits beside the scale */
 .card--list:not(.card--skills) {
   width: min(100%, 520px);
 }

@@ -147,7 +147,7 @@
       "tier": 2,
       "title": "Introduction to R",
       "issuer": "DataCamp",
-      "date": "Feb 2026",
+      "date": "2026",
       "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/809e64b52a493c612f095a0343942b60d67c9e8c"
     },
     {
@@ -155,7 +155,7 @@
       "tier": 2,
       "title": "Introduction to the Tidyverse",
       "issuer": "DataCamp",
-      "date": "Jan 2026",
+      "date": "2026",
       "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/78392a7471a068371ccbca61448ea34443b31370"
     },
     {
@@ -163,7 +163,7 @@
       "tier": 2,
       "title": "Introduction to Data Visualization with ggplot2",
       "issuer": "DataCamp",
-      "date": null,
+      "date": "2026",
       "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/ee4e4a806dd32fd055f56a6396b7efe2ee6f2a69"
     },
     {
@@ -171,7 +171,7 @@
       "tier": 2,
       "title": "Exploratory Data Analysis in R",
       "issuer": "DataCamp",
-      "date": null,
+      "date": "2026",
       "credential": "https://www.datacamp.com/completed/statement-of-accomplishment/course/ad596e23f7fa8385f17a5e0bb3a9b7617eac327a"
     }
   ],
@@ -242,7 +242,7 @@
     },
     {
       "name": "English",
-      "cv": "C1 (academic)",
+      "cv": "C1",
       "linkedin": "Full professional proficiency",
       "tier": 1
     },
