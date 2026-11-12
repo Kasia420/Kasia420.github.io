@@ -28,16 +28,12 @@
   },
   "projects": [
     {
-      "id": "speakleash",
+      "id": "pl-test-sets",
       "tier": 1,
-      "title": "LLM Evaluation Volunteer",
-      "org": "SpeakLeash (Bielik, Polish LLM)",
+      "title": "Polish LLM Evaluation Test Sets",
+      "org": "independent project",
       "dates": "Oct 2026 – present",
-      "bullets": [
-        "Designed a 50-item Polish irony-comprehension benchmark (literal/ironic minimal pairs and dialogues, closed-format answers) used to evaluate Bielik",
-        "Built three further 50-item sets on implicature, case marking vs word order, and English–Polish false friends; piloted items on multiple models before handoff"
-      ],
-      "linkedin_note": "Currently working on: Polish irony benchmark: a set of literal/ironic minimal pairs testing whether LLMs understand sarcasm in Polish."
+      "summary": "Designed four 50-item test sets probing Polish language understanding in LLMs: irony comprehension, implicature, case marking vs word order (who did what to whom), and English–Polish false friends. Minimal pairs and short dialogues with closed-format answers, piloted on several models. Sets shared with a SpeakLeash community member for evaluating the Bielik LLM."
     },
     {
       "id": "lost-in-translation",
@@ -47,7 +43,7 @@
         "Collected 50 LLM responses via API; measured cross-lingual consistency with LaBSE embeddings (median cosine .81) and sentiment with XLM-RoBERTa",
         "Tested differences with the Wilcoxon signed-rank test (p = .0004) and reported effect sizes"
       ],
-      "linkedin_note": "\"Lost in Translation\": a Python pipeline comparing model answers to 25 matched English/Polish prompts (history, literature, social norms), using Wikipedia retrieval, LaBSE/XLM-RoBERTa embeddings and Wilcoxon tests to measure drift toward English-language framing.",
+      "summary": "A Python pipeline comparing a language model's answers to 25 matched English/Polish prompts on Polish history, literature and social norms, with English and Polish Wikipedia as a human-written baseline, LaBSE and XLM-RoBERTa for similarity and sentiment, and Wilcoxon tests. Polish answers were milder in tone, but so is Polish Wikipedia.",
       "links": [
         "lost_in_translation_site",
         "lost_in_translation_repo",

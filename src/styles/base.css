@@ -101,7 +101,7 @@ button {
 }
 
 .label {
-  color: var(--straw);
+  color: var(--label);
   font: 400 13px/1.4 var(--font-mono);
   letter-spacing: 0.12em;
   text-transform: uppercase;

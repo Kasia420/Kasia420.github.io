@@ -21,6 +21,8 @@
   --text: var(--bone);
   --text-2: #cbbfa3; /* 10.9:1 on night */
   --text-3: var(--dust);
+  /* the small gold labels: the straw hue, lighter, so they keep 4.8:1 even on a card over lit grass under the pointer's glow (10.1:1 on night) */
+  --label: #d2b672;
 
   --radius: 4px;
   --gutter: clamp(18px, 4vw, 56px);

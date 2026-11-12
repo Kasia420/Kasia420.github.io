@@ -1,0 +1,88 @@
+<!doctype html>
+<!--
+  The link-preview image (1280x640) in the site's style: night, a pool of torchlight on dry grass, the name.
+  Rendered to public/assets/ by scripts/make-og-images.sh; ?sub= sets the line under the name.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../node_modules/@fontsource/cormorant-garamond/300.css" />
+    <link rel="stylesheet" href="../node_modules/@fontsource/courier-prime/400.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 640px;
+        overflow: hidden;
+        background: #0a0907;
+      }
+      .frame {
+        position: relative;
+        width: 1280px;
+        height: 640px;
+        background: radial-gradient(640px 360px at 430px 690px, rgb(237 227 207 / 0.16), transparent 70%), #0a0907;
+      }
+      svg.grass,
+      svg.grain {
+        position: absolute;
+        inset: 0;
+      }
+      .text {
+        position: absolute;
+        left: 92px;
+        top: 112px;
+      }
+      h1 {
+        margin: 0;
+        font: 300 104px/0.98 'Cormorant Garamond', Georgia, serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        background: radial-gradient(circle at 30% 150%, #f6f1e7 0, #ede3cf 300px, #b8a888 760px);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p {
+        margin: 34px 0 0 4px;
+        color: #d2b672;
+        font: 400 26px/1 'Courier Prime', 'Courier New', monospace;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <svg class="grass" id="grass" width="1280" height="640" viewBox="0 0 1280 640" aria-hidden="true"></svg>
+      <div class="text">
+        <h1>Katarzyna<br />Frąckowiak</h1>
+        <p id="sub">Linguist · LLM Evaluation</p>
+      </div>
+      <svg class="grain" width="1280" height="640" aria-hidden="true">
+        <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" /></filter>
+        <rect width="1280" height="640" filter="url(#n)" opacity="0.07" />
+      </svg>
+    </div>
+    <script>
+      const sub = new URLSearchParams(location.search).get('sub')
+      if (sub) document.getElementById('sub').textContent = sub
+      // dry grass along the bottom, lit where the torch falls (left of centre), fading into the dark at the sides
+      let seed = 7
+      const r = () => ((seed = (seed * 16807) % 2147483647) / 2147483647)
+      const svg = document.getElementById('grass')
+      let out = ''
+      for (let i = 0; i < 520; i++) {
+        const x = r() * 1320 - 20
+        const h = 70 + r() * 150 * (1 - Math.abs(x - 430) / 1400)
+        const lean = (r() - 0.5) * 46
+        const light = Math.max(0, 1 - Math.hypot((x - 430) / 620, 0.4)) ** 1.6
+        const a = (0.12 + 0.75 * light) * (0.5 + 0.5 * r())
+        const c = light > 0.45 ? '#d8c08a' : '#8a7a58'
+        out += `<path d="M${x.toFixed(1)} 640 Q ${(x + lean * 0.4).toFixed(1)} ${(640 - h * 0.6).toFixed(1)} ${(x + lean).toFixed(1)} ${(640 - h).toFixed(1)}" stroke="${c}" stroke-opacity="${a.toFixed(3)}" stroke-width="${(1 + r() * 1.4).toFixed(2)}" fill="none" stroke-linecap="round"/>`
+        if (r() < 0.35) out += `<ellipse cx="${(x + lean).toFixed(1)}" cy="${(640 - h - 6).toFixed(1)}" rx="2.2" ry="8" transform="rotate(${(lean * 0.6).toFixed(1)} ${(x + lean).toFixed(1)} ${(640 - h - 6).toFixed(1)})" fill="${c}" fill-opacity="${(a * 0.9).toFixed(3)}"/>`
+      }
+      svg.innerHTML = out
+    </script>
+  </body>
+</html>

@@ -1,15 +1,21 @@
 import { cefrStep, link, profile, type Entry } from '../lib/content'
 import { el } from '../lib/dom'
+import { t } from '../lib/i18n'
 
 /** Everything below the highlights, rendered from content/profile.json. */
 
 export const bullets = (items?: string[]): HTMLElement[] =>
   items && items.length ? [el('ul', { class: 'entry__bullets' }, items.map((b) => el('li', { text: b })))] : []
 
-/** The arrow after a link that opens a new tab. Drawn in CSS (.ext), not the ↗ character, which phones show as an emoji. */
-export const newTab = (): HTMLElement[] => [el('span', { class: 'ext', 'aria-hidden': 'true' }), el('span', { class: 'sr-only', text: ' (opens in a new tab)' })]
+/**
+ * The arrow after a link that opens a new tab: drawn in CSS (.ext), not the ↗ character, which phones show as
+ * an emoji. That the link opens a new tab is said in the link's own accessible name, not in hidden text.
+ */
+export const arrow = (): HTMLElement => el('span', { class: 'ext', 'aria-hidden': 'true' })
+export const newTabName = (text: string) => `${text} (${t('newTab')})`
 
-export const extLink = (text: string, href: string) => el('a', { href, target: '_blank', rel: 'noopener' }, [text, ...newTab()])
+export const extLink = (text: string, href: string) =>
+  el('a', { href, target: '_blank', rel: 'noopener', 'aria-label': newTabName(text) }, [text, arrow()])
 
 export function entry(e: Entry): HTMLElement {
   const meta = [e.org, e.dates, e.place].filter(Boolean).join(' · ')
@@ -34,7 +40,7 @@ export function mountEducation(root: HTMLElement): void {
           el('h3', { class: 'entry__title', text: ed.degree }),
           el('p', { class: 'entry__meta', text: `${ed.school} · ${ed.dates}` }),
         ]),
-        ...(ed.activities_linkedin ? [el('p', { class: 'entry__note', text: `Activities: ${ed.activities_linkedin}` })] : []),
+        ...(ed.activities_linkedin ? [el('p', { class: 'entry__note', text: `${t('activities')}: ${ed.activities_linkedin}` })] : []),
       ]),
     ),
   )
@@ -47,7 +53,7 @@ export function mountPublications(root: HTMLElement): void {
         el('p', { class: 'label', text: `${p.kind} · ${p.venue} · ${p.date}` }),
         el('h3', { class: 'card__title', text: p.title }),
         el('p', { class: 'card__text', text: p.description }),
-        extLink('Read on Academia.edu', link(p.link)),
+        extLink(t('readOn'), link(p.link)),
       ]),
     ),
   )
@@ -60,7 +66,7 @@ export function mountCertificates(root: HTMLElement): void {
         el('p', { class: 'label', text: [c.issuer, c.date].filter(Boolean).join(' · ') }),
         el('h3', { class: 'card__title', text: c.title }),
         ...(c.note_linkedin ? [el('p', { class: 'card__text', text: c.note_linkedin })] : []),
-        extLink('Show credential', c.credential),
+        extLink(t('showCredential'), c.credential),
       ]),
     ),
   )
@@ -87,8 +93,9 @@ export function mountLanguages(root: HTMLElement): void {
 }
 
 export function mountSkills(root: HTMLElement): void {
-  const hi = new Set(profile.skills.highlight_for_target_roles.map((s) => s.toLowerCase()))
-  const isHi = (s: string) => [...hi].some((h) => s.toLowerCase().startsWith(h))
+  // a skill is highlighted when it is one of the highlighted ones or starts with one as a whole word ("R (tidyverse…)")
+  const hi = profile.skills.highlight_for_target_roles.map((s) => s.toLowerCase())
+  const isHi = (s: string) => hi.some((h) => s.toLowerCase() === h || s.toLowerCase().startsWith(`${h} `))
   root.replaceChildren(
     ...profile.skills.cv_groups.map((g) =>
       el('div', { class: 'skills__group' }, [
@@ -97,7 +104,7 @@ export function mountSkills(root: HTMLElement): void {
       ]),
     ),
     el('div', { class: 'skills__group' }, [
-      el('p', { class: 'label', text: 'Also on LinkedIn' }),
+      el('p', { class: 'label', text: t('alsoLinkedIn') }),
       el(
         'ul',
         { class: 'skills__list' },

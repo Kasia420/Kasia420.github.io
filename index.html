@@ -6,10 +6,28 @@
     <title>Katarzyna Frąckowiak</title>
     <meta name="description" content="%HOOK%" />
     <meta name="theme-color" content="#0a0907" />
+    <link rel="canonical" href="https://kasia420.github.io/" />
+    <link rel="alternate" hreflang="en" href="https://kasia420.github.io/" />
+    <link rel="alternate" hreflang="pl" href="https://kasia420.github.io/pl/" />
+    <link rel="alternate" hreflang="x-default" href="https://kasia420.github.io/" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kasia420.github.io/" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="pl_PL" />
     <meta property="og:title" content="Katarzyna Frąckowiak" />
     <meta property="og:description" content="%HOOK%" />
+    <meta property="og:image" content="https://kasia420.github.io/assets/og-image.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="Katarzyna Frąckowiak: Linguist · LLM Evaluation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Katarzyna Frąckowiak" />
+    <meta name="twitter:description" content="%HOOK%" />
+    <meta name="twitter:image" content="https://kasia420.github.io/assets/og-image.png" />
+    <meta name="twitter:image:alt" content="Katarzyna Frąckowiak: Linguist · LLM Evaluation" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- without JavaScript: only what works without it (the walk, the switches and the jump links need it) -->
+    <noscript><style>.walk, #about, #contact, .hero__enter, .motion-toggle, .nav a[href^='#'] { display: none !important; }</style></noscript>
     <script type="module" src="/src/design/main.ts"></script>
   </head>
   <body>
@@ -23,22 +41,37 @@
         <div class="hero__fallback" aria-hidden="true"></div>
         <div class="container hero__inner">
           <nav class="nav" aria-label="Sections">
-            <a class="nav__lit" id="nav-lit" target="_blank" rel="noopener">Lost in Translation<span class="ext" aria-hidden="true"></span><span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="nav__lit" id="nav-lit" href="%LIT_SITE%" target="_blank" rel="noopener" aria-label="Lost in Translation (opens in a new tab)">Lost in Translation<span class="ext" aria-hidden="true"></span></a>
             <a href="#highlights">Highlights</a>
             <a href="#experience">Experience</a>
             <a href="#certificates">Certificates</a>
             <a href="#contact">Contact</a>
+            <a href="/assets/Katarzyna_Frackowiak_CV_EN.pdf">CV (PDF)</a>
+            <a href="/pl/" hreflang="pl" lang="pl">Polski</a>
           </nav>
           <div class="hero__text">
-            <h1 class="display hero__name" id="hero-name"></h1>
-            <p class="hero__line" id="hero-line"></p>
+            <h1 class="display hero__name" id="hero-name">%NAME%</h1>
+            <p class="hero__line" id="hero-line">%TAGLINE%</p>
+            <p class="hero__cv">
+              <span class="hero__cv-label">CV (PDF)</span>
+              <a href="/assets/Katarzyna_Frackowiak_CV_EN.pdf" hreflang="en" aria-label="CV (PDF), English">English</a>
+              <a href="/assets/Katarzyna_Frackowiak_CV_PL.pdf" hreflang="pl" aria-label="CV (PDF), Polski">Polski</a>
+            </p>
+            <noscript>
+              <ul class="noscript-links">
+                <li><a href="%LIT_SITE%">Lost in Translation: the project's site</a></li>
+                <li><a href="%LIT_REPO%">Lost in Translation: code and report on GitHub</a></li>
+                <li><a href="%GITHUB%">GitHub</a></li>
+                <li><a href="%LINKEDIN%">LinkedIn</a></li>
+                <li>E-mail: %EMAIL_TEXT%</li>
+              </ul>
+            </noscript>
           </div>
           <button type="button" class="hero__enter" id="hero-enter">See now</button>
         </div>
       </section>
 
-      <section class="walk" id="highlights" aria-labelledby="highlights-title" tabindex="-1">
-        <h2 class="sr-only" id="highlights-title">Highlights</h2>
+      <section class="walk" id="highlights" aria-label="Highlights" tabindex="-1">
         <div class="container walk__stops" id="stops"></div>
       </section>
 

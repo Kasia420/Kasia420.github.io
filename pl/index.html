@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pl" data-take="flash" data-page="site">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Katarzyna Frąckowiak</title>
+    <meta name="description" content="%HOOK%" />
+    <meta name="theme-color" content="#0a0907" />
+    <link rel="canonical" href="https://kasia420.github.io/pl/" />
+    <link rel="alternate" hreflang="en" href="https://kasia420.github.io/" />
+    <link rel="alternate" hreflang="pl" href="https://kasia420.github.io/pl/" />
+    <link rel="alternate" hreflang="x-default" href="https://kasia420.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kasia420.github.io/pl/" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:title" content="Katarzyna Frąckowiak" />
+    <meta property="og:description" content="%HOOK%" />
+    <meta property="og:image" content="https://kasia420.github.io/assets/og-image-pl.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="Katarzyna Frąckowiak: Językoznawczyni · Ewaluacja LLM" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Katarzyna Frąckowiak" />
+    <meta name="twitter:description" content="%HOOK%" />
+    <meta name="twitter:image" content="https://kasia420.github.io/assets/og-image-pl.png" />
+    <meta name="twitter:image:alt" content="Katarzyna Frąckowiak: Językoznawczyni · Ewaluacja LLM" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- bez JavaScriptu: tylko to, co działa bez niego (spacer, przełączniki i odnośniki do sekcji go potrzebują) -->
+    <noscript><style>.walk, #about, #contact, .hero__enter, .motion-toggle, .nav a[href^='#'] { display: none !important; }</style></noscript>
+    <script type="module" src="/src/design/main.ts"></script>
+  </head>
+  <body>
+    <canvas class="world" aria-hidden="true"></canvas>
+    <div class="flash" aria-hidden="true"></div>
+    <a class="skip" href="#main">Przejdź do treści</a>
+    <button type="button" class="seg seg--single motion-toggle" id="motion-toggle">Animacje: wł.</button>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-name">
+        <div class="hero__fallback" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <nav class="nav" aria-label="Sekcje">
+            <a class="nav__lit" id="nav-lit" href="%LIT_SITE%" target="_blank" rel="noopener" aria-label="Lost in Translation (otwiera się w nowej karcie)">Lost in Translation<span class="ext" aria-hidden="true"></span></a>
+            <a href="#highlights">Najważniejsze</a>
+            <a href="#experience">Doświadczenie</a>
+            <a href="#certificates">Certyfikaty</a>
+            <a href="#contact">Kontakt</a>
+            <a href="/assets/Katarzyna_Frackowiak_CV_PL.pdf">CV (PDF)</a>
+            <a href="/" hreflang="en" lang="en">English</a>
+          </nav>
+          <div class="hero__text">
+            <h1 class="display hero__name" id="hero-name">%NAME%</h1>
+            <p class="hero__line" id="hero-line">%TAGLINE%</p>
+            <p class="hero__cv">
+              <span class="hero__cv-label">CV (PDF)</span>
+              <a href="/assets/Katarzyna_Frackowiak_CV_PL.pdf" hreflang="pl" aria-label="CV (PDF), Polski">Polski</a>
+              <a href="/assets/Katarzyna_Frackowiak_CV_EN.pdf" hreflang="en" aria-label="CV (PDF), English">English</a>
+            </p>
+            <noscript>
+              <ul class="noscript-links">
+                <li><a href="%LIT_SITE%">Lost in Translation: strona projektu</a></li>
+                <li><a href="%LIT_REPO%">Lost in Translation: kod i raport na GitHubie</a></li>
+                <li><a href="%GITHUB%">GitHub</a></li>
+                <li><a href="%LINKEDIN%">LinkedIn</a></li>
+                <li>E-mail: %EMAIL_TEXT%</li>
+              </ul>
+            </noscript>
+          </div>
+          <button type="button" class="hero__enter" id="hero-enter">Zobacz teraz</button>
+        </div>
+      </section>
+
+      <section class="walk" id="highlights" aria-label="Najważniejsze" tabindex="-1">
+        <div class="container walk__stops" id="stops"></div>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title" tabindex="-1">
+        <div class="container">
+          <div class="panel panel--about">
+            <h2 class="display section__title" id="about-title">O mnie</h2>
+            <div class="prose" id="about-text"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="walk" id="languages" aria-labelledby="languages-title" tabindex="-1">
+        <div class="container walk__head">
+          <h2 class="display section__title section__title--free" id="languages-title">Języki i umiejętności</h2>
+        </div>
+        <div class="container walk__stops">
+          <div class="stop stop--left">
+            <article class="card card--stop card--list" aria-label="Języki">
+              <p class="label">Języki</p>
+              <div class="list" id="languages-list"></div>
+            </article>
+          </div>
+          <div class="stop stop--right">
+            <article class="card card--stop card--list card--skills" aria-label="Umiejętności">
+              <p class="label">Umiejętności</p>
+              <div class="skills" id="skills-list"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="walk" id="experience" aria-labelledby="experience-title" tabindex="-1">
+        <div class="container walk__head">
+          <h2 class="display section__title section__title--free" id="experience-title">Doświadczenie</h2>
+        </div>
+        <div class="container walk__stops" id="experience-stops"></div>
+      </section>
+
+      <section class="walk" id="education" aria-labelledby="education-title" tabindex="-1">
+        <div class="container walk__head walk__head--right">
+          <h2 class="display section__title section__title--free" id="education-title">Wykształcenie</h2>
+        </div>
+        <div class="container walk__stops" id="education-stops"></div>
+      </section>
+
+      <section class="walk" id="certificates" aria-labelledby="certificates-title" tabindex="-1">
+        <div class="container walk__stops">
+          <div class="stop stop--left stop--wide" id="certificates-stop">
+            <div class="stop__body">
+              <h2 class="display section__title section__title--free" id="certificates-title">Certyfikaty</h2>
+              <div class="cards cards--two" id="certificates-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="walk" id="writing" aria-labelledby="writing-title" tabindex="-1">
+        <div class="container walk__stops">
+          <div class="stop stop--right stop--wide" id="writing-stop">
+            <div class="stop__body">
+              <h2 class="display section__title section__title--free" id="writing-title">Teksty</h2>
+              <div id="writing-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--end" id="contact" aria-labelledby="contact-title" tabindex="-1">
+        <div class="container">
+          <h2 class="display section__title section__title--free" id="contact-title">Kontakt</h2>
+          <p class="contact__roles" id="target-roles"></p>
+          <ul class="contact" id="contact-links"></ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

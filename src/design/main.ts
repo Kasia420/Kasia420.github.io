@@ -9,10 +9,11 @@ import '../styles/base.css'
 import './design.css'
 
 import Lenis from 'lenis'
-import { bullets, extLink, mountCertificates, mountLanguages, mountPublications, mountSkills, newTab } from '../components/entries'
+import { arrow, bullets, extLink, mountCertificates, mountLanguages, mountPublications, mountSkills, newTabName } from '../components/entries'
 import { mountField, type Field } from '../components/field'
 import { email, link, profile } from '../lib/content'
 import { el } from '../lib/dom'
+import { lang, t } from '../lib/i18n'
 import { createWorld, type Shot } from '../scene/world'
 
 const html = document.documentElement
@@ -54,11 +55,10 @@ const need = <T extends { id: string }>(list: T[], id: string): T => {
   if (!hit) throw new Error(`profile.json: no "${id}"`)
   return hit
 }
-const note = (text?: string) => (text ? [el('p', { class: 'entry__note', text })] : [])
 
 // ---- the motion switch (the typeface switch of the review page lives in review.ts) ----
 const motionBtn = $<HTMLButtonElement>('#motion-toggle')
-motionBtn.textContent = reducedMotion ? 'Motion: off' : 'Motion: on'
+motionBtn.textContent = reducedMotion ? t('motionOff') : t('motionOn')
 motionBtn.addEventListener('click', () => {
   const next = reducedMotion ? 'full' : 'reduced'
   const params = new URLSearchParams(location.search)
@@ -89,7 +89,7 @@ interface Stop {
   actions?: () => HTMLElement[]
   more?: () => HTMLElement[]
 }
-const sp = need(profile.projects, 'speakleash')
+const sets = need(profile.projects, 'pl-test-sets')
 const lit = need(profile.projects, 'lost-in-translation')
 const ma = need(profile.projects, 'ma-thesis')
 const gen = need(profile.certifications, 'cambridge-genai')
@@ -99,58 +99,67 @@ const stops: Stop[] = [
   {
     id: lit.id,
     featured: true,
-    kicker: 'Featured project',
+    kicker: t('featured'),
     title: lit.title,
-    summary: lit.linkedin_note ?? '',
+    summary: lit.summary ?? '',
     actions: () => [
-      el('a', { class: 'btn', href: link('lost_in_translation_site'), target: '_blank', rel: 'noopener' }, ["Open the project's site", ...newTab()]),
-      el('p', { class: 'links' }, [extLink('Repository', link('lost_in_translation_repo')), ' · ', extLink('Report', link('lost_in_translation_report'))]),
+      el('a', { class: 'btn', href: link('lost_in_translation_site'), target: '_blank', rel: 'noopener', 'aria-label': newTabName(t('openSite')) }, [
+        t('openSite'),
+        arrow(),
+      ]),
+      el('p', { class: 'links' }, [extLink(t('repository'), link('lost_in_translation_repo')), ' · ', extLink(t('report'), link('lost_in_translation_report'))]),
     ],
     more: () => [el('p', { class: 'entry__meta', text: lit.kind ?? '' }), ...bullets(lit.bullets_cv)],
   },
-  {
-    id: sp.id,
-    kicker: sp.dates ?? '',
-    title: sp.title,
-    meta: sp.org,
-    summary: sp.bullets?.[0] ?? '',
-    more: () => [...bullets(sp.bullets?.slice(1)), ...note(sp.linkedin_note)],
-  },
-  { id: ma.id, kicker: 'In progress', title: 'MA thesis', summary: ma.linkedin_note ?? '', more: () => bullets(ma.bullets) },
+  { id: sets.id, kicker: sets.dates ?? '', title: sets.title, meta: sets.org, summary: sets.summary ?? '' },
+  { id: ma.id, kicker: t('inProgress'), title: t('maThesis'), summary: ma.linkedin_note ?? '', more: () => bullets(ma.bullets) },
   {
     id: gen.id,
-    kicker: `Certificate · ${gen.date}`,
+    kicker: `${t('certificate')} · ${gen.date}`,
     title: gen.title,
     meta: gen.issuer,
     summary: gen.note_linkedin ?? '',
-    actions: () => [el('p', { class: 'links' }, [extLink('Show credential', gen.credential)])],
+    actions: () => [el('p', { class: 'links' }, [extLink(t('showCredential'), gen.credential)])],
   },
   {
     id: 'languages-stop',
-    kicker: 'Languages',
+    kicker: t('languages'),
     title: langs.map((l) => l.name).join(' · '),
-    summary: langs.map((l) => `${l.name} ${l.cv}`).join(' · '),
+    summary: langs.map((l) => `${l.name}${t('langLevel')}${l.cv}`).join(' · '),
     more: () => [el('ul', { class: 'entry__bullets' }, langs.map((l) => el('li', { text: `${l.name}: ${l.linkedin}` })))],
   },
   {
     id: 'skills-stop',
-    kicker: 'Skills',
+    kicker: t('skills'),
     title: hiSkills[0],
     summary: hiSkills.slice(1, 5).join(' · '),
     more: () => [el('ul', { class: 'entry__bullets' }, hiSkills.map((s) => el('li', { text: s })))],
   },
 ]
+// Motion off reads as a document: the section gets a heading like the others, and only the projects
+// stand here, because the certificate, the languages and the skills have their full sections further down
+const shown = reducedMotion ? stops.filter((s) => [lit.id, sets.id, ma.id].includes(s.id)) : stops
+if (reducedMotion) {
+  const section = $('#highlights')
+  $('#stops').before(
+    el('div', { class: 'container walk__head' }, [
+      el('h2', { class: 'display section__title section__title--free', id: 'highlights-title', text: t('highlights') }),
+    ]),
+  )
+  section.removeAttribute('aria-label')
+  section.setAttribute('aria-labelledby', 'highlights-title')
+}
 $('#stops').replaceChildren(
-  ...stops.map((s, i) => {
+  ...shown.map((s, i) => {
     const extra: HTMLElement[] = []
     if (s.more) {
       const details = el('div', { class: 'stop__more', id: `more-${s.id}`, hidden: '' }, s.more())
-      const btn = el('button', { class: 'stop__toggle', type: 'button', 'aria-expanded': 'false', 'aria-controls': `more-${s.id}`, text: 'More' })
+      const btn = el('button', { class: 'stop__toggle', type: 'button', 'aria-expanded': 'false', 'aria-controls': `more-${s.id}`, text: t('details') })
       btn.addEventListener('click', () => {
         const on = details.hidden
         details.hidden = !on
         btn.setAttribute('aria-expanded', String(on))
-        btn.textContent = on ? 'Less' : 'More'
+        btn.textContent = on ? t('hideDetails') : t('details')
         relayoutSoon()
       })
       extra.push(btn, details)
@@ -183,7 +192,7 @@ $('#experience-stops').replaceChildren(
 )
 $('#education-stops').replaceChildren(
   ...profile.education.map((e) =>
-    entryCard(e.dates, e.degree, e.school, e.activities_linkedin ? [el('p', { class: 'entry__note', text: `Activities: ${e.activities_linkedin}` })] : [], e.tier, 'right'),
+    entryCard(e.dates, e.degree, e.school, e.activities_linkedin ? [el('p', { class: 'entry__note', text: `${t('activities')}: ${e.activities_linkedin}` })] : [], e.tier, 'right'),
   ),
 )
 /** "Feb 2025 – May 2025" -> "2025", "2020 – 2023" -> "2020–2023": painted on the job's post */
@@ -204,10 +213,21 @@ $('#contact-links').replaceChildren(
   el('li', {}, [extLink('GitHub', link('github'))]),
   el('li', {}, [extLink('Lost in Translation', link('lost_in_translation_site'))]),
   el('li', {}, [el('a', { href: `mailto:${email()}`, text: email() })]),
+  // the CV as a PDF (the copy without the phone number), the same file the nav links to
+  el('li', {}, [el('a', { href: `/assets/Katarzyna_Frackowiak_CV_${lang === 'pl' ? 'PL' : 'EN'}.pdf`, text: 'CV (PDF)' })]),
 )
 
+// Motion off: each card becomes a row, its label beside a body that holds everything else
+// (so a long label, like the Cambridge one, never pushes the lines of its row apart)
+if (reducedMotion) {
+  document.querySelectorAll<HTMLElement>('main .card').forEach((card) => {
+    const label = card.querySelector(':scope > .label')
+    card.append(el('div', { class: 'card__body' }, [...card.children].filter((c) => c !== label)))
+  })
+}
+
 // ---- the field ----
-const lightName = (x: number, y: number, flash: number) => {
+const lightName =(x: number, y: number, flash: number) => {
   const r = heroName.getBoundingClientRect()
   heroName.style.setProperty('--lx', `${(x - r.left).toFixed(1)}px`)
   heroName.style.setProperty('--ly', `${(y - r.top).toFixed(1)}px`)

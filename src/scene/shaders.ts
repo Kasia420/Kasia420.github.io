@@ -219,6 +219,7 @@ uniform vec3 uBare; // the wood under it
 uniform vec3 uRoof;
 uniform float uDim; // 1, or less for the reflection in the water
 uniform float uFog;
+uniform float uWear; // 0: paint lifting in patches all over (the farm); 1: the church's old whitewash, flaking low down and under the eaves
 varying vec3 vWorld;
 varying vec3 vObj;
 varying vec3 vN;
@@ -237,8 +238,19 @@ void main() {
     float worn = 0.13 * (1.0 - smoothstep(0.0, 1.3, vObj.y)) + 0.08 * smoothstep(2.0, 2.7, vObj.y);
     float flake = fbm(vObj * vec3(4.2, 9.0, 4.2) + 3.1);
     float peel = smoothstep(0.645 - worn, 0.68 - worn, flake);
+    vec3 bare = uBare;
+    if (uWear > 0.5) {
+      // the church: the whitewash holds on most boards and comes off in small chips, mostly low down where the rain
+      // splashes, under the eaves and in a few weathered patches; the wood under it is silvered, not dark
+      float low = 1.0 - smoothstep(0.1, 1.2, vObj.y);
+      float eave = smoothstep(2.9, 3.7, vObj.y) * (1.0 - smoothstep(4.0, 4.6, vObj.y));
+      float patches = smoothstep(0.58, 0.74, fbm(vObj * 0.7 + 11.0));
+      float edge = 0.78 - 0.3 * low - 0.16 * eave - 0.14 * patches;
+      peel = smoothstep(edge, edge + 0.04, fbm(vObj * vec3(12.0, 30.0, 12.0) + 3.1));
+      bare = mix(uBare, vec3(0.5, 0.48, 0.44), 0.55);
+    }
     if (m == 8) peel = 1.0 - 0.75 * smoothstep(0.7, 0.78, flake); // the paint almost all gone, a few patches left
-    vec3 wood = uBare * (0.8 + 0.3 * vnoise(vec3((vObj.x + vObj.z) * 30.0, vObj.y * 2.0, 0.0)));
+    vec3 wood = bare * (0.8 + 0.3 * vnoise(vec3((vObj.x + vObj.z) * 30.0, vObj.y * 2.0, 0.0)));
     col = mix(uPaint * tone, wood, peel);
     // grime running down, dirt splashed up from the ground
     float streak = vnoise(vec3((vObj.x + vObj.z) * 9.0, vObj.y * 0.35, 3.0));

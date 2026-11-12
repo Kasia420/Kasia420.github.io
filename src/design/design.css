@@ -231,6 +231,37 @@ section[tabindex='-1']:focus {
 [data-take='flash'] .hero__line {
   font-style: italic;
 }
+/* the CV as a PDF, both languages, for whoever would rather not scroll */
+.hero__cv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  margin: 2px 0 0;
+  font: 400 12px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.hero__cv-label {
+  margin-right: 4px;
+  color: var(--label);
+  text-shadow: 0 0 12px rgb(10 9 7 / 0.9);
+}
+.hero__cv a {
+  padding: 10px 16px;
+  border: 1px solid rgb(201 173 106 / 0.55);
+  border-radius: 999px;
+  background: rgb(10 9 7 / 0.78);
+  color: var(--bone);
+  text-decoration: none;
+  transition:
+    background var(--dur-ui),
+    color var(--dur-ui);
+}
+.hero__cv a:hover {
+  background: var(--bone);
+  color: var(--night);
+}
 .hero__enter {
   justify-self: center;
   padding: 11px 22px;
@@ -390,6 +421,12 @@ section[tabindex='-1']:focus {
   padding: 32px 34px 28px;
   border-color: var(--straw);
 }
+.card--featured .card__text {
+  /* the featured project reads as a paragraph, set ragged right */
+  text-align: left;
+  -webkit-hyphens: manual;
+  hyphens: manual;
+}
 .card--featured .card__title {
   font-family: var(--font-display);
   font-size: clamp(28px, 4.4vw, 58px);
@@ -517,9 +554,13 @@ section[tabindex='-1']:focus {
 .card--publication {
   max-width: 68ch;
 }
+/* the languages card is wider than the other cards, so the level ("C1 (academic)") always fits beside the scale */
+.card--list:not(.card--skills) {
+  width: min(100%, 520px);
+}
 .lang {
   display: grid;
-  grid-template-columns: 110px auto 1fr;
+  grid-template-columns: minmax(84px, max-content) auto max-content;
   align-items: center;
   gap: 16px;
   padding: 10px 0;
@@ -550,10 +591,11 @@ section[tabindex='-1']:focus {
 .lang__level {
   color: var(--dust);
   font: 400 14px var(--font-mono);
+  white-space: nowrap;
 }
 @media (max-width: 520px) {
   .lang {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) max-content;
     row-gap: 8px;
   }
   .lang__scale {
@@ -655,5 +697,130 @@ section[tabindex='-1']:focus {
   }
   .motion-toggle {
     min-height: 40px;
+  }
+}
+
+/* ---------- without JavaScript: the essentials as plain links under the name ---------- */
+.noscript-links {
+  display: grid;
+  gap: 8px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-2);
+  font: 400 14px/1.5 var(--font-mono);
+}
+.noscript-links a {
+  color: var(--bone);
+}
+
+/* ---------- Motion off: no walk, so the page reads like a document ----------
+   The field stays in the hero and fades out below it; after that the night is plain.
+   No floating cards: each entry is a row between thin rules (on wide screens its label sits beside it,
+   like the dates on a printed CV), and every section opens with its heading. */
+[data-motion='reduced'] main > section:not(.hero) {
+  background: var(--night);
+}
+[data-motion='reduced'] #highlights {
+  background: linear-gradient(to bottom, rgb(10 9 7 / 0), var(--night) 120px);
+}
+[data-motion='reduced'] main > section:not(.hero) > .container {
+  max-width: 940px;
+}
+[data-motion='reduced'] .walk,
+[data-motion='reduced'] .section {
+  padding: 104px 0 0;
+}
+[data-motion='reduced'] .section--end {
+  min-height: 0;
+  padding-bottom: 160px;
+}
+[data-motion='reduced'] .walk__head,
+[data-motion='reduced'] .stop--wide {
+  padding-top: 0; /* the certificates and writing headings sit inside their stop */
+}
+[data-motion='reduced'] .section__title {
+  margin: 0 0 20px;
+  font-size: clamp(30px, 3.6vw, 46px);
+  text-shadow: none;
+}
+[data-motion='reduced'] .walk__head--right .section__title--free,
+[data-motion='reduced'] .stop--right .stop__body .section__title--free {
+  margin-left: 0;
+}
+[data-motion='reduced'] .walk__stops,
+[data-motion='reduced'] .cards {
+  display: block;
+}
+[data-motion='reduced'] .stop {
+  display: block;
+  min-height: 0;
+  padding: 0;
+}
+[data-motion='reduced'] .stop--wide .stop__body,
+[data-motion='reduced'] .card--stop,
+[data-motion='reduced'] .card--featured,
+[data-motion='reduced'] .card--list,
+[data-motion='reduced'] .card--publication {
+  width: auto;
+  max-width: none;
+}
+[data-motion='reduced'] .card {
+  overflow: visible;
+  padding: 26px 0 28px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+}
+[data-motion='reduced'] .card--featured {
+  border-top-color: var(--straw);
+}
+[data-motion='reduced'] .card--featured .card__title {
+  font-size: clamp(30px, 3.8vw, 48px);
+}
+[data-motion='reduced'] .card__body {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  gap: 10px;
+}
+[data-motion='reduced'] .card__body > a {
+  justify-self: start;
+}
+[data-motion='reduced'] .card::before,
+[data-motion='reduced'] .panel::before {
+  display: none; /* no flashlight glow on the rows */
+}
+/* About: its heading, then the text under a rule */
+[data-motion='reduced'] .panel {
+  max-width: none;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+[data-motion='reduced'] .panel .prose {
+  max-width: none;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+[data-motion='reduced'] .contact__roles,
+[data-motion='reduced'] .contact {
+  text-shadow: none;
+}
+[data-motion='reduced'] #contact .section__title {
+  width: auto; /* a rule under the heading, as above the first row of every other section */
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 761px) {
+  /* the label and the body side by side, on the same first line */
+  [data-motion='reduced'] .card {
+    grid-template-columns: 200px minmax(0, 1fr);
+    column-gap: 40px;
+    align-items: baseline;
   }
 }

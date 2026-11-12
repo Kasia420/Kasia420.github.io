@@ -222,6 +222,7 @@ export function createWorld(
         uRoof: { value: srgb(c.roof) },
         uDim: { value: 1 },
         uFog: { value: 0.012 },
+        uWear: { value: 0 },
       },
     })
   const thing = (geo: THREE.BufferGeometry, mat: THREE.ShaderMaterial) => {
@@ -233,6 +234,7 @@ export function createWorld(
   // floodlit from the viewer's side, so they show far off; the rest only where the light falls
   const chapel = thing(chapelGeometry(), structure(0.62, [-0.45, 0.4, 1]))
   chapel.rotation.y = 0.12
+  chapel.material.uniforms.uWear.value = 1 // its whitewash flakes low down and under the eaves, not in blotches all over
   const fence = thing(new THREE.BufferGeometry(), structure(0, [0, 1, 0]))
   const house = thing(houseGeometry(), structure(0.5, [0.55, 0.45, 1], FARM))
   house.rotation.y = 0.55

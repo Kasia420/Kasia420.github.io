@@ -1,0 +1,187 @@
+{
+  "target_roles": "Jestem otwarta na role związane z ewaluacją LLM, anotacją danych, oceną jakości wyników wyszukiwania, taksonomią i odpowiedzialną AI — zdalnie/asynchronicznie lub w Poznaniu.",
+  "person": {
+    "hook": "Jestem językoznawczynią i zajmuję się ewaluacją modeli językowych: tworzę zestawy testowe, które pokazują, gdzie modele zawodzą w zetknięciu z prawdziwym językiem — i dlaczego."
+  },
+  "about": {
+    "paragraphs": [
+      "Jestem językoznawczynią i zajmuję się ewaluacją modeli językowych: tworzę zestawy testowe, które pokazują, gdzie modele zawodzą w zetknięciu z prawdziwym językiem — i dlaczego.",
+      "Jestem na drugim roku studiów magisterskich Language, Mind & Technology na Uniwersytecie im. Adama Mickiewicza w Poznaniu (lingwistyka kognitywna, psycholingwistyka, NLP, Python, R). W pracy magisterskiej badam, jak modele językowe radzą sobie z angielszczyzną osób, dla których angielski nie jest językiem ojczystym. Projektuję stopniowane zestawy testowe z wiadomościami w stylu polskich uczących się angielskiego i mierzę, gdzie spada jakość odpowiedzi oraz czy odpowiada za to tokenizacja, czy dane treningowe.",
+      "Polski jest moim językiem ojczystym, angielskim posługuję się biegle. Jestem otwarta na role związane z ewaluacją LLM, anotacją danych, oceną jakości wyników wyszukiwania, taksonomią i odpowiedzialną AI — zdalnie/asynchronicznie lub w Poznaniu."
+    ]
+  },
+  "projects": [
+    {
+      "id": "pl-test-sets",
+      "title": "Zestawy testowe do ewaluacji LLM w języku polskim",
+      "org": "projekt własny",
+      "dates": "paź 2026 – obecnie",
+      "summary": "Zaprojektowałam cztery zestawy po 50 pozycji badające rozumienie języka polskiego przez LLM: rozumienie ironii, implikatury, przypadki a szyk zdania („kto komu”) oraz fałszywi przyjaciele angielsko-polscy. Pary minimalne i krótkie dialogi z odpowiedziami zamkniętymi, sprawdzone pilotażowo na kilku modelach. Zestawy przekazane osobie ze społeczności SpeakLeash do ewaluacji modelu Bielik."
+    },
+    {
+      "id": "lost-in-translation",
+      "summary": "Pipeline w Pythonie porównujący odpowiedzi modelu językowego na 25 dopasowanych par pytań po angielsku i po polsku o polskiej historii, literaturze i normach społecznych. Punktem odniesienia napisanym przez ludzi jest angielska i polska Wikipedia, podobieństwo i wydźwięk mierzą LaBSE i XLM-RoBERTa, a różnice sprawdzają testy Wilcoxona. Odpowiedzi po polsku miały łagodniejszy wydźwięk, ale łagodniejsza jest też polska Wikipedia.",
+      "bullets_cv": [
+        "Zebrałam 50 odpowiedzi modelu przez API; spójność międzyjęzykową zmierzyłam embeddingami LaBSE (mediana cosinusów .81), a wydźwięk modelem XLM-RoBERTa",
+        "Różnice sprawdziłam testem rangowanych znaków Wilcoxona (p = .0004) i podałam wielkości efektu"
+      ],
+      "kind": "Projekt zaliczeniowy (Uniwersytet im. Adama Mickiewicza, Language, Mind & Technology), rozszerzony o drugą serię · listopad 2026"
+    },
+    {
+      "id": "ma-thesis",
+      "title": "Praca magisterska (w toku)",
+      "bullets": [
+        "jak LLM przetwarzają angielski użytkowników z polskim jako językiem ojczystym"
+      ],
+      "linkedin_note": "W pracy magisterskiej badam, jak modele językowe radzą sobie z angielszczyzną osób, dla których angielski nie jest językiem ojczystym. Projektuję stopniowane zestawy testowe z wiadomościami w stylu polskich uczących się angielskiego i mierzę, gdzie spada jakość odpowiedzi oraz czy odpowiada za to tokenizacja, czy dane treningowe."
+    }
+  ],
+  "experience": [
+    {
+      "id": "eeg-lab",
+      "title": "Asystentka · staż",
+      "org": "PoLA Lab, Uniwersytet im. Adama Mickiewicza",
+      "dates": "lut 2025 – maj 2025",
+      "bullets": [
+        "Prowadziłam sesje EEG/ERP zgodnie ze ścisłym protokołem eksperymentalnym, dbając o porównywalność danych między uczestnikami",
+        "Pracowałam z paradygmatami primingu semantycznego i decyzji leksykalnej; przeszłam szkolenie z podstaw sygnału EEG (pasma częstotliwości, rodzaje artefaktów)"
+      ]
+    },
+    {
+      "id": "tutor",
+      "title": "Korepetytorka języka angielskiego",
+      "org": "działalność własna",
+      "bullets": [
+        "Zajęcia indywidualne dla polskojęzycznych uczniów; codzienna praca z błędami wynikającymi z transferu z języka polskiego (przedimki, przyimki, szyk zdania), czyli zjawiskiem, które dziś badam w LLM"
+      ]
+    },
+    {
+      "id": "cadaad",
+      "title": "Wolontariuszka",
+      "org": "9. Międzynarodowa Konferencja CADAAD, UAM",
+      "dates": "lipiec 2024",
+      "bullets": [
+        "Koordynowałam rejestrację gości i wsparcie na miejscu dla zagranicznych uczestników konferencji poświęconej analizie dyskursu"
+      ]
+    },
+    {
+      "id": "lubaszka",
+      "title": "Obsługa klienta · praca sezonowa",
+      "dates": "maj 2022 – wrz 2022 · 5 mies.",
+      "place": "Warszawa, mazowieckie · stacjonarnie"
+    }
+  ],
+  "education": [
+    {
+      "id": "ma",
+      "degree": "Studia magisterskie, Language, Mind & Technology",
+      "school": "Uniwersytet im. Adama Mickiewicza w Poznaniu",
+      "dates": "paź 2025 – obecnie"
+    },
+    {
+      "id": "ba",
+      "degree": "Studia licencjackie, Filologia angielska: literatura i kultura",
+      "school": "Uniwersytet im. Adama Mickiewicza w Poznaniu",
+      "dates": "paź 2022 – wrz 2025",
+      "activities_linkedin": "staż w laboratorium EEG"
+    }
+  ],
+  "publications": [
+    {
+      "id": "echoes-of-the-mind",
+      "kind": "Reportaż literacki",
+      "date": "6 kwi 2024",
+      "description": "„Echoes of the Mind” to reportaż literacki, w którym towarzyszymy Julii, psychiatrce, przez jeden 24-godzinny dyżur na psychiatrycznej izbie przyjęć w Polsce. Trzy spotkania z pacjentami — starszym mężczyzną z majaczeniem alkoholowym, młodym mężczyzną z urojeniami religijnymi i chorym na schizofrenię paranoidalną, który boi się technologii — stają się soczewką szerszej krytyki społecznej: tekst przygląda się stosunkowi Polaków do alkoholu, uwikłaniu Kościoła katolickiego w życie polityczne i psychologicznym skutkom cyfryzacji."
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cambridge-genai",
+      "date": "wrz 2025",
+      "note_linkedin": "Certyfikat Cambridge z generatywnej AI w biznesie (ryzyko związane z AI, etyka, odpowiedzialne wdrażanie)"
+    },
+    {
+      "id": "datacamp-r",
+      "date": "lut 2026"
+    },
+    {
+      "id": "datacamp-tidyverse",
+      "date": "sty 2026"
+    }
+  ],
+  "skills": {
+    "cv_groups": [
+      {
+        "name": "Programowanie",
+        "items": [
+          "Python (pandas, NumPy, SciPy, matplotlib)",
+          "R (tidyverse, ggplot2)",
+          "Git / GitHub",
+          "Docker",
+          "REST API"
+        ]
+      },
+      {
+        "name": "NLP / LLM",
+        "items": [
+          "HuggingFace transformers",
+          "sentence-transformers",
+          "wielojęzyczne embeddingi (LaBSE)",
+          "ewaluacja LLM",
+          "projektowanie benchmarków",
+          "prompt engineering"
+        ]
+      },
+      {
+        "name": "Dane i statystyka",
+        "items": [
+          "testy nieparametryczne",
+          "wielkość efektu",
+          "modele mieszane",
+          "czyszczenie danych"
+        ]
+      },
+      {
+        "name": "Automatyzacja"
+      }
+    ],
+    "linkedin": [
+      "Pisanie akademickie",
+      "Prompt engineering",
+      "R (język programowania)",
+      "Lingwistyka komputerowa",
+      "Python (język programowania)",
+      "Planowanie strategiczne",
+      "Strategiczna analiza danych"
+    ],
+    "highlight_for_target_roles": [
+      "Ewaluacja LLM",
+      "projektowanie benchmarków",
+      "prompt engineering",
+      "Lingwistyka komputerowa",
+      "Python",
+      "R",
+      "Pisanie akademickie"
+    ]
+  },
+  "languages": [
+    {
+      "name": "Polski",
+      "cv": "ojczysty",
+      "linkedin": "biegłość na poziomie rodzimym lub dwujęzycznym"
+    },
+    {
+      "name": "Angielski",
+      "cv": "C1 (akademicki)",
+      "linkedin": "pełna biegłość zawodowa"
+    },
+    {
+      "name": "Niemiecki",
+      "linkedin": "znajomość podstawowa"
+    },
+    {
+      "name": "Hiszpański",
+      "linkedin": "znajomość podstawowa"
+    }
+  ]
+}

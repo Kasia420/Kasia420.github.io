@@ -924,8 +924,9 @@ export function tableGeometry(): THREE.BufferGeometry {
   ] as const)
     box(0.07, 0.75, 0.07, 3, at(x, 0.375, z))
   for (const z of [0.42, -0.42]) box(1.55, 0.1, 0.03, 3, at(0, 0.7, z))
-  // the chair, pushed back and turned away
-  const C = at(0.95, 0, 0.55, 0.6)
+  // the writer's chair, behind the table, pushed back a little and turned as if someone just got up;
+  // from the path only its back shows above the desk (in front of it, its legs hidden in the grass, it looked set on the table)
+  const C = at(0.3, 0, -1.0, 0.35)
   const rel = (m: THREE.Matrix4) => C.clone().multiply(m)
   parts.push(piece(new THREE.BoxGeometry(0.46, 0.05, 0.44), 3, rel(at(0, 0.46, 0))))
   for (const [x, z] of [
