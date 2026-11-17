@@ -19,6 +19,25 @@ export function el<K extends keyof HTMLElementTagNameMap>(
   return node
 }
 
+/**
+ * Polish typesetting: a one-letter word (a, i, o, u, w, z) never ends a line.
+ * The space after it becomes a no-break space, in every text node under `root`;
+ * the words themselves never change.
+ */
+export function keepOneLetterWords(root: Node): void {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) =>
+      n.parentElement?.closest('script, style, noscript, code, pre, textarea') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT,
+  })
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+    const s = n.nodeValue ?? ''
+    const out = s.replace(/([aiouwzAIOUWZ])[ \t\r\n]+(?=\S)/g, (m: string, letter: string, at: number) =>
+      at === 0 || /[\s(\[„"«—–]/.test(s[at - 1]) ? `${letter}\u00a0` : m,
+    )
+    if (out !== s) n.nodeValue = out
+  }
+}
+
 export function cssVar(name: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim()
 }

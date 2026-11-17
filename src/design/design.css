@@ -479,6 +479,14 @@ section[tabindex='-1']:focus {
   display: grid;
   gap: 6px;
 }
+/* About's "See more": the opened paragraph reads like the others, not like the big first one */
+.prose .about__more p:first-child {
+  color: inherit;
+  font-size: 1em;
+}
+.about__toggle {
+  margin-top: 4px;
+}
 
 /* ---------- sections further on ---------- */
 .section {

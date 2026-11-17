@@ -73,7 +73,8 @@ export interface Profile {
     /** kept in two parts so the whole address never sits in the site's files */
     email: { user: string; domain: string }
   }
-  about: { paragraphs: string[] }
+  /** `more` opens under "See more"; a {key} in its text becomes the link person.links[key] */
+  about: { paragraphs: string[]; more?: string[] }
   projects: Entry[]
   experience: Entry[]
   education: Education[]

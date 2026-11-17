@@ -12,7 +12,7 @@ import Lenis from 'lenis'
 import { arrow, bullets, extLink, mountCertificates, mountLanguages, mountPublications, mountSkills, newTabName } from '../components/entries'
 import { mountField, type Field } from '../components/field'
 import { email, link, profile } from '../lib/content'
-import { el } from '../lib/dom'
+import { el, keepOneLetterWords } from '../lib/dom'
 import { lang, t } from '../lib/i18n'
 import { createWorld, type Shot } from '../scene/world'
 
@@ -202,7 +202,32 @@ const yearsOf = (dates?: string) => {
 }
 
 // ---- every other theme of the CV ----
-$('#about-text').replaceChildren(...profile.about.paragraphs.map((t) => el('p', { text: t })))
+/** a paragraph whose {key} placeholders become links from person.links ({vinted} -> "Vinted") */
+const linkedParagraph = (text: string) =>
+  el(
+    'p',
+    {},
+    text.split(/(\{\w+\})/).map((part) => {
+      const key = part.match(/^\{(\w+)\}$/)?.[1]
+      return key ? extLink(key.charAt(0).toUpperCase() + key.slice(1), link(key)) : part
+    }),
+  )
+/** the personal part of About opens only on "See more", under the professional paragraphs */
+const aboutMore = (): HTMLElement[] => {
+  const more = profile.about.more
+  if (!more?.length) return []
+  const box = el('div', { class: 'about__more', id: 'about-more', hidden: '' }, more.map(linkedParagraph))
+  const btn = el('button', { class: 'stop__toggle about__toggle', type: 'button', 'aria-expanded': 'false', 'aria-controls': 'about-more', text: t('seeMore') })
+  btn.addEventListener('click', () => {
+    const on = box.hidden
+    box.hidden = !on
+    btn.setAttribute('aria-expanded', String(on))
+    btn.textContent = on ? t('seeLess') : t('seeMore')
+    relayoutSoon()
+  })
+  return [box, btn]
+}
+$('#about-text').replaceChildren(...profile.about.paragraphs.map((t) => el('p', { text: t })), ...aboutMore())
 mountCertificates($('#certificates-list'))
 mountPublications($('#writing-list'))
 mountLanguages($('#languages-list'))
@@ -225,6 +250,9 @@ if (reducedMotion) {
     card.append(el('div', { class: 'card__body' }, [...card.children].filter((c) => c !== label)))
   })
 }
+
+// Polish typesetting: one-letter words (z, i, w…) stay on the line of the word after them
+if (lang === 'pl') keepOneLetterWords(document.body)
 
 // ---- the field ----
 const lightName =(x: number, y: number, flash: number) => {
